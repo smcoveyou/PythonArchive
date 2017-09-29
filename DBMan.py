@@ -14,15 +14,16 @@ class command():
 
         #Format
         print('\n\n\n')
-        print('A Cab#\t    A Device  A Port\t B Cab#\t   B Device\tB Port')
-
+        print("{0:<24s}{1:<24s}{2:<24s}{3:<24s}{4:<24s}{5:<24s}".format('A Cab#','A Device','A Port','B Cab#','B Device','B Port'))
         for row in cursor.fetchall():
-            print('--------------------------------------------------------------------------------------------------------')
+            print('----------------------------------------------------------------------------------------------------------------------------------')
             for field in row:
-                print(field, end="\t")
+                field = str(field)
+                print("{:<24s}".format(field), end="")
             print('\n')
         print('\n\n\n')
     def printCab(self):
+        #prompt for cabinet number
         cabnum = input("Enter the cabinet number: ")
         #Create Query
         cursor.execute('SELECT [First Node Cabinet], [First Node Item], [First Node Port], [Last Node Cabinet], [Last Node Item], [Last Node Port] FROM Table1 WHERE [First Node Cabinet]='+cabnum)
