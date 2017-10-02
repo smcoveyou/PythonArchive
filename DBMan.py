@@ -29,11 +29,12 @@ class command():
         cursor.execute('SELECT [First Node Cabinet], [First Node Item], [First Node Port], [Last Node Cabinet], [Last Node Item], [Last Node Port] FROM Table1 WHERE [First Node Cabinet]='+cabnum)
         #Format
         print('\n\n\n')
-        print('A Cab#\t\tA Device\t\tA Port\t\tB Cab#\t\tB Device\t\tB Port')
+        print("{0:<24s}{1:<24s}{2:<24s}{3:<24s}{4:<24s}{5:<24s}".format('A Cab#','A Device','A Port','B Cab#','B Device','B Port'))
         for row in cursor.fetchall():
          print('--------------------------------------------------------------------------------------------------------')
          for field in row:
-             print(field, end="\t\t")
+             field = str(field)
+             print("{:<24s}".format(field), end="")
          print('\n')
         print('\n\n\n')
 
