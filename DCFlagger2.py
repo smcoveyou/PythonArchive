@@ -1,3 +1,12 @@
+# DC FLAGGER - Python v3.6.2
+# Author: Seth Coveyou      Owner: Cytherian LLC
+#
+# OBJ: Read in connection labels and their given MS Access IDs to determine
+#       if and how many duplicates there are in a port map by comparing those
+#       labels to their inverse
+#
+# BEGIN SCRIPT:
+
 #!/usr/bin/python
 import re
 
@@ -7,12 +16,13 @@ regexReverse = r"(\S*)<=>(\S*)"
 regexIndex = r"(\d+)\s(\S*)"
 
 #Open file for read MAKE SURE TO CHANGE BASED ON FILE
-fileRead = open("C:\\Users\\BK\\Documents\\NW1Labels.txt","r")
+fileRead = open("C:\\Users\\BK\\Documents\\KGITLabelTest.txt","r")
 
 #State string arrays
 strIDArray=[]
 strLabelArray=[]
 strReverseLabelArray=[]
+strAlreadyFlagged=[]
 
 #Create i incrementor for loop
 i = 0
@@ -23,6 +33,8 @@ for line in fileRead:
     strIDArray.append(i)
     strLabelArray.append(i)
     strReverseLabelArray.append(i)
+    strAlreadyFlagged.append(i)
+    strAlreadyFlagged[i] = 0
 
     #Import line and convert to string
     strLine = str(line)
@@ -41,13 +53,18 @@ for line in fileRead:
 
 #END OF FOR LOOP
 i=1
+count = "None"
 #BEGIN FOR LOOP - READ THROUGH LABEL ARRAY AND REVERSE LABEL ARRAY AND FIND MATCHES
 for x in range(len(strLabelArray)):
     for y in range(len(strReverseLabelArray)):
         if strLabelArray[x] == strReverseLabelArray[y]:
-            count = str(i)
-            print("DUPLICATION FOUND.\n ID of Duplicate Record: " + strIDArray[y] + "\n Label: " + strLabelArray[x] + "\n Label Copy: " + strLabelArray[y] + "\n\n")
-            i += 1
+            if strIDArray[x] == strAlreadyFlagged[x]:
+                print("...")
+            else:
+                count = str(i)
+                print("DUPLICATION FOUND.\n" + "ID of Record: " + strIDArray[x] + "\n ID of Duplicate Record: " + strIDArray[y] + "\n Label: " + strLabelArray[x] + "\n Label Copy: " + strLabelArray[y] + "\n\n")
+                i += 1
+                strAlreadyFlagged[y] = strIDArray[y]
         #END IF
     #END Y FOR LOOP
 #END X FOR LOOP
