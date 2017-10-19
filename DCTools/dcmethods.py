@@ -108,3 +108,16 @@ def determineBank (PORT_ORIENT,deviceNumber):
         else:
             deviceBank = 3
         return deviceBank
+
+    def frCalc(DEV_1_FR, DEV_2_FR):
+        if DEV_1_FR == "F":
+            if DEV_2_FR == "F":
+                #do nothing
+            else:
+                #add length to total lengths
+        else:
+            if DEV_2_FR == "R":
+                #do nothing
+            else:
+                #add length to total lengths
+    
