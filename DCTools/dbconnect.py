@@ -18,4 +18,9 @@ cursor = connection.cursor()
 
 #BEGIN COMMANDS
 class command():
-    def getCableLengths():
+    def getCabinetDimensions ():
+        Cabinet_Height = cursor.execute('SELECT [Cabinet_Height] FROM Cabinet')
+        Cabinet_Depth = cursor.execute('SELECT [Cabinet_Depth] FROM Cabinet')
+        Cabinet_RU = cursor.execute('SELECT [Cabinet_RU] FROM Cabinet')
+        Cabinet_Dimensions = [Cabinet_Height, Cabinet_Depth, Cabinet_RU]
+        return Cabinet_Dimensions
