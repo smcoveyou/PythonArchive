@@ -72,6 +72,11 @@ def rackElevations ():
             rackElevations()
 
 def ladderRack ():
+    toLadderRack = input("Will this cable be going into the ladder rack?(y/n): ")
+    if toLadderRack == "N" or toLadderRack == "n":
+        LADDER_RACK_HEIGHT = 0
+        LADDER_RACK_ORIENTATION = "N\A"
+        return
     LADDER_RACK_HEIGHT = input("Enter the measurement from the ladderRack to the top of cabinet 1?: ")
     LADDER_RACK_ORIENTATION = input("Enter the orientation of the ladder rack (front/middle/rear): ")
     LADDER_RACK_ORIENTATION = LADDER_RACK_ORIENTATION.upper()
