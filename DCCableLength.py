@@ -119,12 +119,12 @@ TotalLengthOfCable = 0
 
 #CABINET HEIGHT LENGTH ADDITIONS
 if T_CAB_IF == "N" or T_CAB_IF == "n":
-    cabinetHeightADD1 = int(CABINET_DIM [0]) - ((DEV_1_RU - 1) * 1.75) + 1
-    cabinetHeightADD2 = int(T_CABINET_DIM[0]) - ((DEV_2_RU - 1) * 1.75) + 1
+    cabinetHeightADD1 = int(CABINET_DIM [0]) - ((DEV_1_RU - 1) * 1.75)
+    cabinetHeightADD2 = int(T_CABINET_DIM[0]) - ((DEV_2_RU - 1) * 1.75)
     TotalLengthOfCable = TotalLengthOfCable + cabinetHeightADD1 + cabinetHeightADD2
 else:
-    cabinetHeightADD1 = int(CABINET_DIM [0]) - ((DEV_1_RU - 1) * 1.75) + 1
-    cabinetHeightADD2 = int(CABINET_DIM [0]) - ((DEV_2_RU - 1) * 1.75) + 1
+    cabinetHeightADD1 = int(CABINET_DIM [0]) - ((DEV_1_RU - 1) * 1.75)
+    cabinetHeightADD2 = int(CABINET_DIM [0]) - ((DEV_2_RU - 1) * 1.75)
     TotalLengthOfCable = TotalLengthOfCable + cabinetHeightADD1 + cabinetHeightADD2
 
 #PORT ORIENTATION LENGTH ADDITIONS
@@ -135,20 +135,21 @@ if DEV_1_BANK == 1:
 elif DEV_1_BANK == 2:
     TotalLengthOfCable = TotalLengthOfCable + 2
 else:
-    TotalLengthOfCable = TotalLengthOfCable + 4
+    TotalLengthOfCable = TotalLengthOfCable + 3
 
 if DEV_2_BANK == 1:
     TotalLengthOfCable = TotalLengthOfCable + 1
 elif DEV_2_BANK == 2:
     TotalLengthOfCable = TotalLengthOfCable + 2
 else:
-    TotalLengthOfCable = TotalLengthOfCable + 4
+    TotalLengthOfCable = TotalLengthOfCable + 3
 
 #LADDER RACK LENGTH ADDITIONS
-TotalLengthOfCable = TotalLengthOfCable + LADDER_RACK_HEIGHT + 1
+TotalLengthOfCable = TotalLengthOfCable + LADDER_RACK_HEIGHT
 
 #CHANGE TO FEET
 TotalLengthOfCable = TotalLengthOfCable/12
+TotalLengthOfCable = math.ceil(TotalLengthOfCable)
 
 #PRINT TOTAL LENGTH OF CABLE
 print("\n\n\n   THE TOTAL LENGTH OF THE CABLE SHOULD BE: " + str(TotalLengthOfCable) + "\' \n\n\n")
