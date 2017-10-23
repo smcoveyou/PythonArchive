@@ -109,15 +109,22 @@ def determineBank (PORT_ORIENT,deviceNumber):
             deviceBank = 3
         return deviceBank
 
-    def frCalc(DEV_1_FR, DEV_2_FR):
-        if DEV_1_FR == "F":
-            if DEV_2_FR == "F":
-                #do nothing
-            else:
-                #add length to total lengths
+def frCalc(DEV_1_FR, DEV_2_FR):
+    if DEV_1_FR == "F":
+        if DEV_2_FR == "F":
+            #do nothing
         else:
-            if DEV_2_FR == "R":
-                #do nothing
-            else:
-                #add length to total lengths
-    
+            #add length to total lengths
+    else:
+        if DEV_2_FR == "R":
+            #do nothing
+        else:
+            #add length to total lengths
+
+def ladderRackCalc(LADDER_RACK_HEIGHT, LADDER_RACK_ORIENTATION):
+    if LADDER_RACK_ORIENTATION == "FRONT":
+        #DO THIS
+    else if LADDER_RACK_ORIENTATION == "MIDDLE":
+        #DO THIS
+    else:
+        #DO THIS
